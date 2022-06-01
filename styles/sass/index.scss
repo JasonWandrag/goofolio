@@ -1,0 +1,311 @@
+// Variables
+
+$primary-color: #0077b6;
+$primary-color-highlight: lighten($primary-color, 20%);
+$primary-color-shadow: darken($primary-color, 5%);
+$secondary-color: #b56600;
+
+$black: #353539;
+
+$blue1: #caf0f8;
+$blue2: #ade8f4;
+$blue3: #90e0ef;
+$blue4: #48cae4;
+$blue5: #00b4d8;
+$blue6: #0096c7;
+$blue7: #0077b6;
+$blue8: #023e8a;
+$blue9: #03045e;
+$blueGray1: #353539;
+$blueGray2: #333337;
+$blueGray3: #313135;
+$blueGray4: #292933;
+$blueGray5: #272731;
+$blueGray6: #252529;
+$blueGray7: #232327;
+$blueGray8: #212125;
+$blueGray9: #191923;
+
+$transition: all 0.6s cubic-bezier(0.62, -0.72, 0.46, 1.66);
+
+// Reset
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: $primary-color;
+  color: $black;
+
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+
+svg {
+  position: fixed;
+  z-index: -1;
+}
+
+// Navigation
+#navbar {
+  position: fixed;
+  bottom: 50px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  filter: url(#goo);
+  z-index: 100;
+
+  .nav-button {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    border-radius: 50%;
+    background: $black;
+    place-items: center;
+    width: 70px;
+    aspect-ratio: 1;
+    transition: all 0.6s cubic-bezier(0.62, -0.72, 0.46, 1.66);
+    border: none;
+    outline: none;
+    display: grid;
+    place-content: center;
+    text-decoration: none;
+
+    color: $primary-color;
+
+    .tooltip {
+      max-width: 0px;
+      width: 200px;
+      overflow: hidden;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      position: absolute;
+      transition: $transition;
+      background-color: $black;
+      border-radius: 50px;
+      font-size: initial;
+      text-transform: uppercase;
+      font-weight: bold;
+      color: $primary-color-highlight;
+    }
+
+    i {
+      font-size: 1rem;
+      transition: all 0.6s cubic-bezier(0.62, -0.72, 0.46, 1.66);
+    }
+  }
+
+  #nav-toggle {
+    z-index: 10;
+    padding: 30px;
+    gap: 5px;
+    box-shadow: 0 3px 8px 0 rgb(15 15 20 / 20%);
+    width: 100px;
+    filter: url(#goo);
+    animation: navBubbleSuck 600ms cubic-bezier(0.62, -0.72, 0.46, 1.66)
+      forwards;
+
+    .bar {
+      width: 50px;
+      height: 10px;
+      background-color: $primary-color;
+      transition: $transition;
+      border-radius: 20px;
+    }
+
+    &:hover {
+      .bar {
+        background-color: $primary-color-highlight;
+      }
+      .bar:nth-child(1) {
+        transform: rotate(45deg) translate(11px, 11px);
+      }
+      .bar:nth-child(2) {
+        opacity: 0;
+      }
+      .bar:nth-child(3) {
+        transform: rotate(-45deg) translate(11px, -11px);
+      }
+    }
+  }
+
+  &.active {
+    #nav-toggle {
+      animation: navBubblePulse 1600ms linear 200ms forwards;
+    }
+    .nav-button {
+      .bar:nth-child(1) {
+        transform: rotate(45deg) translate(11px, 11px);
+      }
+      .bar:nth-child(2) {
+        opacity: 0;
+      }
+      .bar:nth-child(3) {
+        transform: rotate(-45deg) translate(11px, -11px);
+      }
+
+      &:hover {
+        transition-delay: 0s !important;
+        z-index: 10;
+
+        .bar {
+          background-color: $primary-color-highlight !important;
+        }
+
+        i {
+          font-size: 1.2em;
+          color: $primary-color-highlight;
+        }
+
+        .tooltip {
+          max-width: 200px;
+          padding: 30px;
+          transition: $transition;
+        }
+      }
+    }
+    .nav-buttons {
+      .nav-button:nth-child(1) {
+        top: -120px;
+        &:hover .tooltip {
+          top: -50%;
+        }
+      }
+      .nav-button:nth-child(2) {
+        left: calc(50% + 65px);
+        top: -95px;
+        transition-delay: 200ms;
+        &:hover .tooltip {
+          top: -20%;
+          left: 200%;
+        }
+      }
+      .nav-button:nth-child(3) {
+        left: calc(50% - 65px);
+        top: -95px;
+        transition-delay: 200ms;
+        &:hover .tooltip {
+          top: -20%;
+          left: -100%;
+        }
+      }
+      .nav-button:nth-child(4) {
+        left: calc(50% + 115px);
+        top: -40px;
+        transition-delay: 400ms;
+        &:hover .tooltip {
+          top: 10%;
+          left: 230%;
+        }
+      }
+      .nav-button:nth-child(5) {
+        left: calc(50% - 115px);
+        top: -40px;
+        transition-delay: 400ms;
+        &:hover .tooltip {
+          top: 10%;
+          left: -130%;
+        }
+      }
+      .nav-button:nth-child(6) {
+        left: calc(50% + 115px);
+        top: 30px;
+        transition-delay: 600ms;
+        &:hover .tooltip {
+          top: 40%;
+          left: 250%;
+        }
+      }
+      .nav-button:nth-child(7) {
+        left: calc(50% - 115px);
+        top: 30px;
+        transition-delay: 600ms;
+        &:hover .tooltip {
+          top: 40%;
+          left: -150%;
+        }
+      }
+    }
+
+    .social-buttons {
+      // display: none;
+      transition-duration: 800ms;
+      .nav-button {
+        // padding: 30px;
+        width: 100px;
+        i {
+          font-size: 2rem;
+        }
+      }
+      .nav-button:nth-child(1) {
+        top: -320px;
+        transition-delay: 800ms;
+      }
+      .nav-button:nth-child(2) {
+        top: -290px;
+        left: calc(50% + 100px);
+        transition-delay: 1000ms;
+      }
+      .nav-button:nth-child(3) {
+        top: -290px;
+        left: calc(50% - 100px);
+        transition-delay: 1000ms;
+      }
+      .nav-button:nth-child(4) {
+        top: -220px;
+        left: calc(50% + 180px);
+        transition-delay: 1200ms;
+      }
+      .nav-button:nth-child(5) {
+        top: -220px;
+        left: calc(50% - 180px);
+        transition-delay: 1200ms;
+      }
+    }
+  }
+}
+
+@keyframes navBubblePulse {
+  0%,
+  15%,
+  30%,
+  45%,
+  60%,
+  75%,
+  90% {
+    transform: translate(-50%, -50%) scale(1);
+  }
+  7%,
+  22%,
+  37%,
+  52%,
+  67%,
+  82%,
+  100% {
+    transform: translate(-50%, -50%) scale(1.1);
+  }
+}
+
+@keyframes navBubbleSuck {
+  0% {
+    transform: translate(-50%, -50%) scale(1.1);
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.1);
+  }
+  70% {
+    transform: translate(-50%, -50%) scale(0.9);
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+  }
+}

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Jason Wandrag - Goo Portfolio</title>
+    <script
+      src="https://kit.fontawesome.com/8aee17fde0.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <link rel="stylesheet" href="./styles/css/index.css" />
+    <script type="module" src="./scripts/navigation.js" defer></script>
+  </head>
+  <body>
+    <!-- Goo Filter -->
+    <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
+      <defs>
+        <filter id="goo">
+          <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur" />
+          <feColorMatrix
+            in="blur"
+            mode="matrix"
+            values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7"
+            result="goo"
+          />
+          <feBlend in="SourceGraphic" in2="goo" />
+        </filter>
+      </defs>
+    </svg>
+    <!-- End of goo Filter -->
+
+    <!-- Navbar -->
+    <nav id="navbar">
+      <button id="nav-toggle" class="nav-button">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </button>
+      <div class="nav-buttons">
+        <button class="nav-button">
+          <i class="fa-solid fa-house"></i>
+          <span class="tooltip">Home</span>
+        </button>
+        <button class="nav-button">
+          <i class="fa-solid fa-user"></i>
+          <span class="tooltip">About</span>
+        </button>
+        <button class="nav-button">
+          <i class="fa-solid fa-laptop-code"></i>
+          <span class="tooltip">Projects</span>
+        </button>
+        <button class="nav-button">
+          <i class="fa-solid fa-certificate"></i>
+          <span class="tooltip">Resume</span>
+        </button>
+        <button class="nav-button">
+          <i class="fa-solid fa-comment"></i>
+          <span class="tooltip">Testimonials</span>
+        </button>
+        <button class="nav-button">
+          <i class="fa-solid fa-at"></i>
+          <span class="tooltip">Contact</span>
+        </button>
+        <button class="nav-button">
+          <i class="fa-solid fa-gear"></i>
+          <span class="tooltip">Settings</span>
+        </button>
+      </div>
+      <div class="social-buttons">
+        <a class="nav-button" href="#" class="nav-social-link"
+          ><i class="fa-solid fa-envelope"></i
+        ></a>
+        <a class="nav-button" href="#" class="nav-social-link"
+          ><i class="fa-brands fa-codepen"></i
+        ></a>
+        <a class="nav-button" href="#" class="nav-social-link"
+          ><i class="fa-brands fa-linkedin-in"></i
+        ></a>
+        <a class="nav-button" href="#" class="nav-social-link"
+          ><i class="fa-brands fa-github"></i
+        ></a>
+        <a class="nav-button" href="#" class="nav-social-link"
+          ><i class="fa-brands fa-itch-io"></i
+        ></a>
+      </div>
+    </nav>
+
+    <!-- <section id="landing">
+      <span>I am</span>
+      <h1>Jason Wandrag</h1>
+      <span>And I am:</span>
+      <h2>A creative frontend developer</h2>
+      <h2>A passionate fullstack lecturer</h2>
+      <h2>An intuitive problem solver</h2>
+      <h2>A proud family man</h2>
+    </section>
+    <section id="about"></section>
+    <section id="projects"></section>
+    <section id="resume"></section>
+    <section id="testimonials"></section>
+    <section id="contact"></section> -->
+  </body>
+</html>
