@@ -27,7 +27,7 @@ $blueGray8: #212125;
 $blueGray9: #191923;
 
 $transition: all 0.6s cubic-bezier(0.62, -0.72, 0.46, 1.66);
-
+$box-shadow: 0 3px 8px 0 rgb(15 15 20 / 20%);
 // Reset
 *,
 *::before,
@@ -46,7 +46,15 @@ body {
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
 
-svg {
+section {
+  min-height: 100vh;
+}
+
+section:nth-of-type(even) {
+  background-color: $primary-color-shadow;
+}
+
+#filter {
   position: fixed;
   z-index: -1;
 }
@@ -54,15 +62,17 @@ svg {
 // Navigation
 #navbar {
   position: fixed;
-  bottom: 50px;
-  left: 50%;
-  transform: translateX(-50%);
+  bottom: 70px;
+  // left: 50%;
+  // transform: translatey(-20px);
   width: 100%;
   filter: url(#goo);
   z-index: 100;
+  transition: $transition;
 
   .nav-button {
     position: absolute;
+    cursor: pointer;
     top: 0;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -78,6 +88,7 @@ svg {
     display: grid;
     place-content: center;
     text-decoration: none;
+    // box-shadow: $box-shadow;
 
     color: $primary-color;
 
@@ -85,6 +96,7 @@ svg {
       max-width: 0px;
       width: 200px;
       overflow: hidden;
+      // box-shadow: $box-shadow;
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
@@ -103,13 +115,50 @@ svg {
       transition: all 0.6s cubic-bezier(0.62, -0.72, 0.46, 1.66);
     }
   }
+  .nav-buttons .nav-button {
+    &:nth-child(1)::before {
+      content: "";
+      position: absolute;
+      left: 100%;
+      width: 0px;
+      height: 10px;
+      background-color: $black;
+      z-index: -1;
+      transition: $transition;
+    }
+    &:nth-child(1) .tooltip {
+      transform: translate(-50%, -50%) rotate(0deg);
+    }
+    &:nth-child(2) .tooltip {
+      transform: translate(-50%, -50%) rotate(30deg);
+    }
+    &:nth-child(3) .tooltip {
+      transform: translate(-50%, -50%) rotate(60deg);
+    }
+    &:nth-child(4) .tooltip {
+      transform: translate(-50%, -50%) rotate(90deg);
+    }
+    &:nth-child(5) .tooltip {
+      transform: translate(-50%, -50%) rotate(-60deg);
+    }
+    &:nth-child(6) .tooltip {
+      transform: translate(-50%, -50%) rotate(-30deg);
+    }
+    &:nth-child(7) .tooltip {
+      transform: translate(-50%, -50%) rotate(0deg);
+    }
+  }
+
+  .social-buttons .nav-button {
+    z-index: 50;
+  }
 
   #nav-toggle {
-    z-index: 10;
+    z-index: 100;
     padding: 30px;
     gap: 5px;
-    box-shadow: 0 3px 8px 0 rgb(15 15 20 / 20%);
-    width: 100px;
+    // box-shadow: 0 3px 8px 0 rgb(15 15 20 / 20%);
+    width: 120px;
     filter: url(#goo);
     animation: navBubbleSuck 600ms cubic-bezier(0.62, -0.72, 0.46, 1.66)
       forwards;
@@ -139,10 +188,18 @@ svg {
   }
 
   &.active {
+    // transform: translatey(-70px);
+    // height: 100%;
     #nav-toggle {
-      animation: navBubblePulse 1600ms linear 200ms forwards;
+      animation: navBubblePulse 1600ms linear 200ms forwards,
+        bounce 1s ease-in-out 1600ms infinite;
     }
     .nav-button {
+      animation: bounce 1s ease-in-out 0ms infinite;
+
+      // &:nth-of-type(even) {
+      //   animation-delay: 500ms;
+      // }
       .bar:nth-child(1) {
         transform: rotate(45deg) translate(11px, 11px);
       }
@@ -155,14 +212,15 @@ svg {
 
       &:hover {
         transition-delay: 0s !important;
-        z-index: 10;
+        // z-index: 5;
+        // font-size: 4rem;
 
         .bar {
           background-color: $primary-color-highlight !important;
         }
 
         i {
-          font-size: 1.2em;
+          font-size: 2rem !important;
           color: $primary-color-highlight;
         }
 
@@ -174,101 +232,131 @@ svg {
       }
     }
     .nav-buttons {
+      .nav-button {
+        width: 100px;
+        transition-duration: 1s;
+        i {
+          font-size: 1rem;
+        }
+      }
+
       .nav-button:nth-child(1) {
-        top: -120px;
+        left: calc(50% - 200px);
+        top: 0px;
+        transition-delay: 600ms;
+        animation-delay: 600ms;
+
+        &::before {
+          width: 200px;
+          transition-delay: 800ms;
+        }
+
         &:hover .tooltip {
-          top: -50%;
+          left: calc(50% - 150px);
+          top: 50%;
         }
       }
       .nav-button:nth-child(2) {
-        left: calc(50% + 65px);
-        top: -95px;
-        transition-delay: 200ms;
+        left: calc(50% - 173px);
+        top: -100px;
+        transition-delay: 700ms;
+        animation-delay: 700ms;
         &:hover .tooltip {
-          top: -20%;
-          left: 200%;
+          left: calc(50% - 130px);
+          top: calc(50% - 75px);
         }
       }
       .nav-button:nth-child(3) {
-        left: calc(50% - 65px);
-        top: -95px;
-        transition-delay: 200ms;
+        left: calc(50% - 100px);
+        top: -173px;
+        transition-delay: 800ms;
+        animation-delay: 800ms;
         &:hover .tooltip {
-          top: -20%;
-          left: -100%;
+          left: calc(50% - 75px);
+          top: calc(50% - 130px);
         }
       }
       .nav-button:nth-child(4) {
-        left: calc(50% + 115px);
-        top: -40px;
-        transition-delay: 400ms;
+        left: calc(50%);
+        top: -200px;
+        transition-delay: 900ms;
+        animation-delay: 900ms;
         &:hover .tooltip {
-          top: 10%;
-          left: 230%;
+          left: 50%;
+          top: calc(50% - 150px);
         }
       }
       .nav-button:nth-child(5) {
-        left: calc(50% - 115px);
-        top: -40px;
-        transition-delay: 400ms;
+        left: calc(50% + 100px);
+        top: -173px;
+        transition-delay: 1000ms;
+        animation-delay: 1000ms;
         &:hover .tooltip {
-          top: 10%;
-          left: -130%;
+          left: calc(50% + 75px);
+          top: calc(50% - 130px);
         }
       }
       .nav-button:nth-child(6) {
-        left: calc(50% + 115px);
-        top: 30px;
-        transition-delay: 600ms;
+        left: calc(50% + 173px);
+        top: -100px;
+        transition-delay: 1100ms;
+        animation-delay: 1100ms;
         &:hover .tooltip {
-          top: 40%;
-          left: 250%;
+          left: calc(50% + 130px);
+          top: calc(50% - 75px);
         }
       }
       .nav-button:nth-child(7) {
-        left: calc(50% - 115px);
-        top: 30px;
-        transition-delay: 600ms;
+        top: 0px;
+        left: calc(50% + 200px);
+        transition-delay: 1200ms;
+        animation-delay: 1200ms;
         &:hover .tooltip {
-          top: 40%;
-          left: -150%;
+          left: calc(50% + 150px);
+          top: 50%;
         }
       }
     }
 
     .social-buttons {
-      // display: none;
-      transition-duration: 800ms;
+      transition-duration: 1000ms;
       .nav-button {
         // padding: 30px;
-        width: 100px;
+        // width: 100px;
+
         i {
           font-size: 2rem;
         }
       }
       .nav-button:nth-child(1) {
-        top: -320px;
-        transition-delay: 800ms;
+        top: 0px;
+        left: calc(50% - 90px);
+        transition-delay: 500ms;
+        animation-delay: 500ms;
       }
       .nav-button:nth-child(2) {
-        top: -290px;
-        left: calc(50% + 100px);
-        transition-delay: 1000ms;
+        top: -64px;
+        left: calc(50% - 64px);
+        transition-delay: 400ms;
+        animation-delay: 400ms;
       }
       .nav-button:nth-child(3) {
-        top: -290px;
-        left: calc(50% - 100px);
-        transition-delay: 1000ms;
+        top: -90px;
+        left: 50%;
+        transition-delay: 300ms;
+        animation-delay: 300ms;
       }
       .nav-button:nth-child(4) {
-        top: -220px;
-        left: calc(50% + 180px);
-        transition-delay: 1200ms;
+        top: -64px;
+        left: calc(50% + 64px);
+        transition-delay: 200ms;
+        animation-delay: 200ms;
       }
       .nav-button:nth-child(5) {
-        top: -220px;
-        left: calc(50% - 180px);
-        transition-delay: 1200ms;
+        top: 0px;
+        left: calc(50% + 90px);
+        transition-delay: 100ms;
+        animation-delay: 100ms;
       }
     }
   }
@@ -307,5 +395,15 @@ svg {
   }
   100% {
     transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+@keyframes bounce {
+  0%,
+  100% {
+    transform: translate(-50%, -55%);
+  }
+  50% {
+    transform: translate(-50%, -45%);
   }
 }

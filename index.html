@@ -11,11 +11,10 @@
     ></script>
 
     <link rel="stylesheet" href="./styles/css/index.css" />
-    <script type="module" src="./scripts/navigation.js" defer></script>
   </head>
   <body>
     <!-- Goo Filter -->
-    <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
+    <svg xmlns="http://www.w3.org/2000/svg" version="1.1" id="filter">
       <defs>
         <filter id="goo">
           <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur" />
@@ -38,28 +37,29 @@
         <span class="bar"></span>
         <span class="bar"></span>
       </button>
+
       <div class="nav-buttons">
-        <button class="nav-button">
+        <button class="nav-button" onclick="scrollToSection('#landing')">
           <i class="fa-solid fa-house"></i>
           <span class="tooltip">Home</span>
         </button>
-        <button class="nav-button">
+        <button class="nav-button" onclick="scrollToSection('#about')">
           <i class="fa-solid fa-user"></i>
           <span class="tooltip">About</span>
         </button>
-        <button class="nav-button">
+        <button class="nav-button" onclick="scrollToSection('#projects')">
           <i class="fa-solid fa-laptop-code"></i>
           <span class="tooltip">Projects</span>
         </button>
-        <button class="nav-button">
+        <button class="nav-button" onclick="scrollToSection('#resume')">
           <i class="fa-solid fa-certificate"></i>
           <span class="tooltip">Resume</span>
         </button>
-        <button class="nav-button">
+        <button class="nav-button" onclick="scrollToSection('#testimonials')">
           <i class="fa-solid fa-comment"></i>
           <span class="tooltip">Testimonials</span>
         </button>
-        <button class="nav-button">
+        <button class="nav-button" onclick="scrollToSection('#contact')">
           <i class="fa-solid fa-at"></i>
           <span class="tooltip">Contact</span>
         </button>
@@ -87,7 +87,7 @@
       </div>
     </nav>
 
-    <!-- <section id="landing">
+    <section id="landing" class="active">
       <span>I am</span>
       <h1>Jason Wandrag</h1>
       <span>And I am:</span>
@@ -100,6 +100,8 @@
     <section id="projects"></section>
     <section id="resume"></section>
     <section id="testimonials"></section>
-    <section id="contact"></section> -->
+    <section id="contact"></section>
+
+    <script src="./scripts/navigation.js"></script>
   </body>
 </html>
