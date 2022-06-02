@@ -87,16 +87,31 @@
       </div>
     </nav>
     <main>
-      <section id="landing" class="active">
-        <span class="pre-title">I am</span>
+      <section id="landing">
+        <div class="landing-text">
+          <img
+            class="landing-img"
+            src="./images/Jason_Wandrag.jpeg"
+            alt="Jason Wandrag"
+          />
+          <span class="greeting">Hi, I am</span>
+          <h1 class="title">Jason Wandrag</h1>
+          <ul class="occupations">
+            <li>A creative frontend developer</li>
+            <li>A passionate fullstack lecturer</li>
+            <li>An intuitive problem solver</li>
+            <li>A proud family man</li>
+          </ul>
+        </div>
+        <!-- <span class="pre-title">I am</span>
         <h1 class="title">Jason Wandrag</h1>
-        <span class="post-title">And I am:</span>
+        <span class="post-title">Fullstack Developer/Lecturer</span>
         <ul>
           <li>A creative frontend developer</li>
           <li>A passionate fullstack lecturer</li>
           <li>An intuitive problem solver</li>
           <li>A proud family man</li>
-        </ul>
+        </ul> -->
       </section>
       <section id="about">
         <h2>About</h2>
@@ -179,5 +194,11 @@
     </main>
 
     <script src="./scripts/navigation.js"></script>
+
+    <script>
+      window.addEventListener("load", () => {
+        document.querySelector("#landing").classList.add("active");
+      });
+    </script>
   </body>
 </html>
