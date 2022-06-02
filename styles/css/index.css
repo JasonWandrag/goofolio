@@ -418,7 +418,7 @@ section.active {
   border-radius: 50%;
   border-top-left-radius: 0px;
   border-bottom-left-radius: 0px;
-  border: 50px solid #353539;
+  border: 30px solid #353539;
   width: 50%;
 }
 #landing .greeting {
@@ -502,7 +502,7 @@ section.active {
   position: relative;
   flex-grow: 1;
   height: 80vh;
-  transition: all 0.6s ease-in-out;
+  transition: all 3s cubic-bezier(0.62, -0.72, 0.46, 1.66);
   border-radius: 40px;
   overflow: hidden;
   display: flex;
@@ -510,29 +510,34 @@ section.active {
   align-items: end;
   box-shadow: 0 3px 8px 0 rgba(15, 15, 20, 0.2);
   cursor: pointer;
+  transform: translatey(-100vh);
+  transition-property: transform;
+}
+#projects.active .project {
+  transform: translatey(0vh);
+}
+#projects.active .project:nth-of-type(1) {
+  transition-delay: 1200ms;
+}
+#projects.active .project:nth-of-type(2) {
+  transition-delay: 1400ms;
+}
+#projects.active .project:nth-of-type(3) {
+  transition-delay: 1600ms;
+}
+#projects.active .project:nth-of-type(4) {
+  transition-delay: 1800ms;
+}
+#projects.active .project:nth-of-type(5) {
+  transition-delay: 2000ms;
 }
 #projects .project:not(.active) {
   background: rgba(0, 0, 0, 0.7);
   max-width: 110px;
-}
-#projects .project:nth-of-type(1) {
-  animation-delay: 100ms;
-}
-#projects .project:nth-of-type(2) {
-  animation-delay: 200ms;
-}
-#projects .project:nth-of-type(3) {
-  animation-delay: 300ms;
-}
-#projects .project:nth-of-type(4) {
-  animation-delay: 400ms;
-}
-#projects .project:nth-of-type(5) {
-  animation-delay: 500ms;
+  animation: contract 1s ease-in forwards;
 }
 #projects .project.active {
-  flex-grow: 1000;
-  max-width: 1000px;
+  animation: expand 1s ease-in forwards;
 }
 #projects .project-img {
   pointer-events: none;
@@ -594,7 +599,7 @@ section.active {
 #projects .project-description * {
   white-space: nowrap;
 }
-#projects .active .project-description {
+#projects .project.active .project-description {
   /*   max-width: 100%; */
   /*   opacity: 1; */
   display: block;
@@ -612,6 +617,26 @@ section.active {
   }
 }
 
+@keyframes expand {
+  0% {
+    flex-grow: 1;
+    max-width: 110px;
+  }
+  100% {
+    flex-grow: 1000;
+    max-width: 1000px;
+  }
+}
+@keyframes contract {
+  0% {
+    flex-grow: 1000;
+    max-width: 1000px;
+  }
+  100% {
+    flex-grow: 1;
+    max-width: 110px;
+  }
+}
 @media screen and (max-width: 768px) {
   #projects {
     flex-direction: column;
