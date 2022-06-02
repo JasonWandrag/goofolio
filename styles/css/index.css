@@ -48,6 +48,20 @@ section.active {
   right: 0;
 }
 
+.section-heading {
+  position: absolute;
+  z-index: 9;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #353539;
+  border-radius: 50px;
+  color: #0077b6;
+  padding: 20px;
+  font-size: 2rem;
+  text-transform: uppercase;
+}
+
 #filter {
   position: fixed;
   z-index: -1;
@@ -414,6 +428,8 @@ section.active {
   top: 50%;
   transform: translateY(-50%);
   bottom: -20px;
+  aspect-ratio: 1;
+  object-fit: cover;
   transition: 2s all ease-in-out;
   border-radius: 50%;
   border-top-left-radius: 0px;
@@ -501,7 +517,7 @@ section.active {
 #projects .project {
   position: relative;
   flex-grow: 1;
-  height: 80vh;
+  height: 60vh;
   transition: all 3s cubic-bezier(0.62, -0.72, 0.46, 1.66);
   border-radius: 40px;
   overflow: hidden;
@@ -535,6 +551,7 @@ section.active {
   background: rgba(0, 0, 0, 0.7);
   max-width: 110px;
   animation: contract 1s ease-in forwards;
+  height: 80vh;
 }
 #projects .project.active {
   animation: expand 1s ease-in forwards;
@@ -621,20 +638,24 @@ section.active {
   0% {
     flex-grow: 1;
     max-width: 110px;
+    height: 80vh;
   }
   100% {
     flex-grow: 1000;
     max-width: 1000px;
+    height: 60vh;
   }
 }
 @keyframes contract {
   0% {
     flex-grow: 1000;
     max-width: 1000px;
+    height: 60vh;
   }
   100% {
     flex-grow: 1;
     max-width: 110px;
+    height: 80vh;
   }
 }
 @media screen and (max-width: 768px) {
@@ -656,6 +677,17 @@ section.active {
     opacity: 1;
     max-width: 600px;
     display: block;
+  }
+}
+@keyframes borderMorph {
+  0%, 100% {
+    border-radius: 30% 70% 70% 30%/30% 30% 70% 70%;
+  }
+  33% {
+    border-radius: 46% 54% 55% 45%/30% 50% 50% 70%;
+  }
+  66% {
+    border-radius: 32% 68% 36% 64%/66% 50% 50% 34%;
   }
 }
 
