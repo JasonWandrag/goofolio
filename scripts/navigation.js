@@ -13,7 +13,21 @@ navToggleButton.addEventListener("click", () =>
 
 function scrollToSection(el) {
   console.log(el);
+  document
+    .querySelectorAll("section")
+    .forEach((e) => e.classList.remove("active"));
   const element = document.querySelector(el);
-  element.scrollIntoView();
+  element.classList.add("active");
   toggleActive(navButtonsContainer);
 }
+
+const projects = document.querySelectorAll(".project");
+
+projects.forEach((p) => {
+  p.addEventListener("click", (e) => {
+    console.log("Clicking on", e.target);
+    const current = e.target;
+    projects.forEach((p) => p.classList.remove("active"));
+    current.classList.add("active");
+  });
+});
